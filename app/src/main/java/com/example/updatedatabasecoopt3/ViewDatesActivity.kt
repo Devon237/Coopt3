@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -16,6 +16,7 @@ class ViewDatesActivity : AppCompatActivity() {
 
     private lateinit var dateListView: ListView
     private lateinit var database: FirebaseDatabase
+    private lateinit var clearButton: Button
     private lateinit var btnGoBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +25,9 @@ class ViewDatesActivity : AppCompatActivity() {
 
         dateListView = findViewById(R.id.dateListView)
         btnGoBack = findViewById(R.id.btnGoBack)
+        clearButton = findViewById(R.id.clearButton)
         database = FirebaseDatabase.getInstance()
 
-        // Read dates from Firebase and display in ListView
         val dateReference = database.getReference("dates")
         dateReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -36,7 +37,6 @@ class ViewDatesActivity : AppCompatActivity() {
                     date?.let { dates.add(it) }
                 }
 
-                // Display dates in the ListView
                 val adapter = ArrayAdapter(this@ViewDatesActivity, android.R.layout.simple_list_item_1, dates)
                 dateListView.adapter = adapter
             }
@@ -46,14 +46,20 @@ class ViewDatesActivity : AppCompatActivity() {
             }
         })
 
-        // Set a click listener for the "Go Back" button
+        clearButton.setOnClickListener {
+            clearDates()
+        }
+
         btnGoBack.setOnClickListener {
-            // Navigate to MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-
-            // Finish the current activity to remove it from the back stack
             finish()
         }
+    }
+
+    private fun clearDates() {
+        val dateReference = database.getReference("dates")
+        dateReference.removeValue()
+        Toast.makeText(this, "Dates Deleted Successfully", Toast.LENGTH_SHORT).show()
     }
 }
