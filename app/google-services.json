@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "454933902329",
+    "firebase_url": "https://testing-databases-a982f-default-rtdb.firebaseio.com",
+    "project_id": "testing-databases-a982f",
+    "storage_bucket": "testing-databases-a982f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454933902329:android:5a6af0aa6ea047e9770328",
+        "android_client_info": {
+          "package_name": "com.example.coopt3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASVgdnGAjptodGS6LngdAL1FS1ih7C8CM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454933902329:android:8447ad649a0269ec770328",
+        "android_client_info": {
+          "package_name": "com.example.updatedatabasecoopt3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASVgdnGAjptodGS6LngdAL1FS1ih7C8CM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
